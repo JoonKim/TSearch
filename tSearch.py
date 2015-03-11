@@ -25,9 +25,10 @@ def dbRun():
     error_log = codecs.open('error_log.log', 'a', 'utf-8')
 
     total = 0
+    useDB = False # True if you want to use postgresql to store the data
 
     try:
-        while True:
+        while useDB:
 
             try:
                 conn = psycopg2.connect("dbname='twitter' user='postgres' host='localhost' password='PASSWORD'")
@@ -129,7 +130,7 @@ def run():
 
     # Connect DB
     try:
-        conn = psycopg2.connect("dbname='sns' user='postgres' host='localhost' password='algus4fkd'")
+        conn = psycopg2.connect("dbname='sns' user='postgres' host='localhost' password='mypasswd'")
     except:
         error_log.write("I am unable to connect to the database\n")
         sys.exit(1)
